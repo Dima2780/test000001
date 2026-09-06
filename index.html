@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Mod Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎮 Minecraft Mod Creator</h1>
+            <p class="subtitle">Создавайте свои моды для Minecraft легко и быстро</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="basic">Основное</button>
+            <button class="tab-btn" data-tab="items">Предметы</button>
+            <button class="tab-btn" data-tab="blocks">Блоки</button>
+            <button class="tab-btn" data-tab="mobs">Мобы</button>
+            <button class="tab-btn" data-tab="export">Экспорт</button>
+        </nav>
+
+        <!-- Basic Info Tab -->
+        <section id="basic" class="tab-content active">
+            <h2>Основная информация о моде</h2>
+            <form id="basic-form">
+                <div class="form-group">
+                    <label for="mod-name">Название мода:</label>
+                    <input type="text" id="mod-name" placeholder="My Awesome Mod" required>
+                </div>
+                <div class="form-group">
+                    <label for="mod-id">ID мода:</label>
+                    <input type="text" id="mod-id" placeholder="my_awesome_mod" required>
+                    <small>Только lowercase, цифры и подчеркивания</small>
+                </div>
+                <div class="form-group">
+                    <label for="mod-version">Версия:</label>
+                    <input type="text" id="mod-version" placeholder="1.0.0" value="1.0.0">
+                </div>
+                <div class="form-group">
+                    <label for="mod-description">Описание:</label>
+                    <textarea id="mod-description" rows="4" placeholder="Опишите ваш мод..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="mod-author">Автор:</label>
+                    <input type="text" id="mod-author" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="minecraft-version">Версия Minecraft:</label>
+                    <select id="minecraft-version">
+                        <option value="1.20.4">1.20.4</option>
+                        <option value="1.20.2">1.20.2</option>
+                        <option value="1.20.1">1.20.1</option>
+                        <option value="1.19.4">1.19.4</option>
+                        <option value="1.19.2">1.19.2</option>
+                        <option value="1.18.2">1.18.2</option>
+                        <option value="1.17.1">1.17.1</option>
+                        <option value="1.16.5">1.16.5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mod-loader">Загрузчик:</label>
+                    <select id="mod-loader">
+                        <option value="forge">Forge</option>
+                        <option value="fabric">Fabric</option>
+                        <option value="neoforge">NeoForge</option>
+                    </select>
+                </div>
+            </form>
+        </section>
+
+        <!-- Items Tab -->
+        <section id="items" class="tab-content">
+            <h2>Создание предметов</h2>
+            <div class="item-creator">
+                <form id="item-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item-name">Название предмета:</label>
+                            <input type="text" id="item-name" placeholder="Magic Sword">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-id">ID предмета:</label>
+                            <input type="text" id="item-id" placeholder="magic_sword">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item-type">Тип предмета:</label>
+                            <select id="item-type">
+                                <option value="tool">Инструмент</option>
+                                <option value="weapon">Оружие</option>
+                                <option value="armor">Броня</option>
+                                <option value="material">Материал</option>
+                                <option value="food">Еда</option>
+                                <option value="misc">Разное</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-material">Материал:</label>
+                            <select id="item-material">
+                                <option value="wood">Дерево</option>
+                                <option value="stone">Камень</option>
+                                <option value="iron">Железо</option>
+                                <option value="gold">Золото</option>
+                                <option value="diamond">Алмаз</option>
+                                <option value="netherite">Незерит</option>
+                                <option value="custom">Свой</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item-damage">Урон:</label>
+                            <input type="number" id="item-damage" min="0" max="100" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-durability">Прочность:</label>
+                            <input type="number" id="item-durability" min="1" max="10000" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-stack">Размер стака:</label>
+                            <input type="number" id="item-stack" min="1" max="64" value="64">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="item-texture">Текстура (URL или оставьте пустым):</label>
+                        <input type="text" id="item-texture" placeholder="https://example.com/texture.png">
+                    </div>
+                    <div class="form-group">
+                        <label for="item-lore">Описание (Lore):</label>
+                        <textarea id="item-lore" rows="2" placeholder="Легендарный меч..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-add">➕ Добавить предмет</button>
+                </form>
+
+                <div class="items-list">
+                    <h3>Созданные предметы</h3>
+                    <div id="items-container" class="items-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blocks Tab -->
+        <section id="blocks" class="tab-content">
+            <h2>Создание блоков</h2>
+            <div class="block-creator">
+                <form id="block-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="block-name">Название блока:</label>
+                            <input type="text" id="block-name" placeholder="Magic Block">
+                        </div>
+                        <div class="form-group">
+                            <label for="block-id">ID блока:</label>
+                            <input type="text" id="block-id" placeholder="magic_block">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="block-type">Тип блока:</label>
+                            <select id="block-type">
+                                <option value="solid">Твердый</option>
+                                <option value="liquid">Жидкость</option>
+                                <option value="ore">Руда</option>
+                                <option value="decorative">Декоративный</option>
+                                <option value="functional">Функциональный</option>
+                                <option value="redstone">Редстоун</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="block-material">Материал:</label>
+                            <select id="block-material">
+                                <option value="stone">Камень</option>
+                                <option value="wood">Дерево</option>
+                                <option value="metal">Металл</option>
+                                <option value="glass">Стекло</option>
+                                <option value="cloth">Ткань</option>
+                                <option value="custom">Свой</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="block-hardness">Твердость:</label>
+                            <input type="number" id="block-hardness" min="0" max="50" step="0.5" value="2">
+                        </div>
+                        <div class="form-group">
+                            <label for="block-resistance">Сопротивление:</label>
+                            <input type="number" id="block-resistance" min="0" max="100" step="0.5" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="block-light">Уровень света:</label>
+                            <input type="number" id="block-light" min="0" max="15" value="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="block-texture">Текстура (URL или оставьте пустым):</label>
+                        <input type="text" id="block-texture" placeholder="https://example.com/texture.png">
+                    </div>
+                    <div class="form-group">
+                        <label for="block-sound">Звук:</label>
+                        <select id="block-sound">
+                            <option value="stone">Камень</option>
+                            <option value="wood">Дерево</option>
+                            <option value="metal">Металл</option>
+                            <option value="glass">Стекло</option>
+                            <option value="grass">Трава</option>
+                            <option value="sand">Песок</option>
+                            <option value="snow">Снег</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-add">➕ Добавить блок</button>
+                </form>
+
+                <div class="blocks-list">
+                    <h3>Созданные блоки</h3>
+                    <div id="blocks-container" class="blocks-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobs Tab -->
+        <section id="mobs" class="tab-content">
+            <h2>Создание мобов</h2>
+            <div class="mob-creator">
+                <form id="mob-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mob-name">Название моба:</label>
+                            <input type="text" id="mob-name" placeholder="Fire Dragon">
+                        </div>
+                        <div class="form-group">
+                            <label for="mob-id">ID моба:</label>
+                            <input type="text" id="mob-id" placeholder="fire_dragon">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mob-type">Тип моба:</label>
+                            <select id="mob-type">
+                                <option value="passive">Мирный</option>
+                                <option value="neutral">Нейтральный</option>
+                                <option value="hostile">Враждебный</option>
+                                <option value="boss">Босс</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mob-category">Категория:</label>
+                            <select id="mob-category">
+                                <option value="monster">Монстр</option>
+                                <option value="animal">Животное</option>
+                                <option value="water">Водный</option>
+                                <option value="ambient">Атмосферный</option>
+                                <option value="misc">Разное</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mob-health">Здоровье:</label>
+                            <input type="number" id="mob-health" min="1" max="1000" value="20">
+                        </div>
+                        <div class="form-group">
+                            <label for="mob-damage">Урон:</label>
+                            <input type="number" id="mob-damage" min="0" max="100" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="mob-speed">Скорость:</label>
+                            <input type="number" id="mob-speed" min="0.1" max="10" step="0.1" value="0.7">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mob-width">Ширина:</label>
+                            <input type="number" id="mob-width" min="0.1" max="10" step="0.1" value="0.6">
+                        </div>
+                        <div class="form-group">
+                            <label for="mob-height">Высота:</label>
+                            <input type="number" id="mob-height" min="0.1" max="20" step="0.1" value="1.8">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mob-texture">Текстура (URL или оставьте пустым):</label>
+                        <input type="text" id="mob-texture" placeholder="https://example.com/texture.png">
+                    </div>
+                    <div class="form-group">
+                        <label for="mob-drops">Дроп (через запятую):</label>
+                        <input type="text" id="mob-drops" placeholder="diamond, gold_ingot, experience">
+                    </div>
+                    <div class="form-group">
+                        <label for="mob-abilities">Способности (через запятую):</label>
+                        <input type="text" id="mob-abilities" placeholder="fire_resistance, flight, teleportation">
+                    </div>
+                    <button type="submit" class="btn btn-add">➕ Добавить моба</button>
+                </form>
+
+                <div class="mobs-list">
+                    <h3>Созданные мобы</h3>
+                    <div id="mobs-container" class="mobs-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Export Tab -->
+        <section id="export" class="tab-content">
+            <h2>Экспорт мода</h2>
+            <div class="export-section">
+                <div class="preview">
+                    <h3>Предварительный просмотр JSON</h3>
+                    <pre id="json-preview"></pre>
+                </div>
+                <div class="export-buttons">
+                    <button id="btn-download-json" class="btn btn-primary">📥 Скачать JSON</button>
+                    <button id="btn-download-forge" class="btn btn-success">⚒️ Скачать для Forge</button>
+                    <button id="btn-download-fabric" class="btn btn-info">🧵 Скачать для Fabric</button>
+                    <button id="btn-copy" class="btn btn-secondary">📋 Копировать JSON</button>
+                </div>
+                <div class="instructions">
+                    <h3>Инструкция по установке</h3>
+                    <ol>
+                        <li>Скачайте файл мода в нужном формате</li>
+                        <li>Установите соответствующий загрузчик (Forge/Fabric)</li>
+                        <li>Поместите файл мода в папку <code>mods</code> вашего Minecraft</li>
+                        <li>Запустите игру и наслаждайтесь!</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Minecraft Mod Creator © 2024 | Создано для фанатов Minecraft</p>
+            <p class="disclaimer">Minecraft является товарным знаком Mojang Synergies AB</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
